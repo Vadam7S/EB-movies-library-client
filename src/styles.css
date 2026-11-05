@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@fontsource-variable/newsreader';
+@import '@fontsource-variable/figtree';
+
+:root {
+  color-scheme: dark;
+
+  --ml-background: #11181C;
+  --ml-surface: #1A242A;
+  --ml-surface-raised: #22303A;
+  --ml-border: #2E3E47;
+
+  --ml-text: #E4E8E4;
+  --ml-text-muted: #A3AFAF;
+  --ml-text-disabled: #6B7A7F;
+
+  --ml-primary: #4F8A8B;
+  --ml-primary-hover: #619C9D;
+  --ml-on-primary: #0B1215;
+  --ml-accent: #D98F5C;
+  --ml-rating: #E0B45E;
+
+  --ml-error: #D0736A;
+  --ml-success: #7FA98A;
+
+  --mat-sys-background: var(--ml-background);
+  --mat-sys-surface: var(--ml-surface);
+  --mat-sys-on-surface: var(--ml-text);
+  --mat-sys-on-surface-variant: var(--ml-text-muted);
+  --mat-sys-primary: var(--ml-primary);
+  --mat-sys-on-primary: var(--ml-on-primary);
+  --mat-sys-tertiary: var(--ml-accent);
+  --mat-sys-outline-variant: var(--ml-border);
+  --mat-sys-error: var(--ml-error);
+}
+
+body {
+  background: var(--ml-background);
+  color: var(--ml-text);
+}

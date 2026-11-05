@@ -1,0 +1,10 @@
+.movies-page {
+  min-height: 70vh;
+}
+
+.movies-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 20px;
+}

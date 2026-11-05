@@ -1,0 +1,35 @@
+.movie-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.movie-content {
+  flex: 1;
+}
+
+.movie-actions {
+  margin-top: auto;
+}
+
+.movie-overview {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.movie-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-weight: 600;
+}
+
+mat-card-header {
+  height: 76px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
