@@ -32,7 +32,7 @@ import { Movie } from './../../models/movie';
 
 export class MovieCardComponent {
   public movie = input.required<Movie>();
-  public imageBaseUrl: any;
+  public imageBaseUrl: string;
 
   constructor() {
     this.imageBaseUrl = environment.imageBaseUrl;
