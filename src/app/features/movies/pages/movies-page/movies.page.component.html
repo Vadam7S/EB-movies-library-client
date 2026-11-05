@@ -1,0 +1,18 @@
+<section class="movies-page">
+  <div class="movies-container">
+
+    @if (isLoading()) {
+      <mat-spinner></mat-spinner>
+      <p>Recuperando información...</p>
+    } @else if (error()) {
+      <!-- Error state in next steps -->
+    } @else if (movies().length) {
+
+      @for (movie of movies(); track movie.id) {
+        <app-movie-card [movie]="movie"></app-movie-card>
+      }
+    } @else {
+      <p>No hay información de películas para mostrar</p>
+    }
+  </div>
+</section>

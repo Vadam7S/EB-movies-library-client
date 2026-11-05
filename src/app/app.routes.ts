@@ -1,3 +1,14 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'movies',
+    pathMatch: 'full'
+  },
+  {
+    path: 'movies',
+    loadComponent: () =>
+      import('./features/movies/pages/movies-page/movies.page.component').then(item => item.MoviesPageComponent)
+  }
+];

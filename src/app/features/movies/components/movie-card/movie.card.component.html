@@ -1,0 +1,21 @@
+<mat-card appearance="filled"  class="movie-card">
+  <mat-card-header class="display-flex content-justify-at-center">
+    <mat-card-title class="display-flex content-justify-at-center text-align-center movie-title">{{ movie().title }}</mat-card-title>
+    <mat-card-subtitle class="display-flex content-justify-at-center text-align-center">{{ movie().release_date }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <img mat-card-image src="{{ imageBaseUrl }}w500{{movie().poster_path}} " alt="{{ movie().title }}'s image">
+
+  <mat-card-content class="movie-content">
+    <p>
+      {{ movie().vote_average }}
+    </p>
+    <p class="movie-overview">
+      {{ movie().overview }}
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions class="movie-actions">
+    <button matButton>Details</button>
+  </mat-card-actions>
+</mat-card>
