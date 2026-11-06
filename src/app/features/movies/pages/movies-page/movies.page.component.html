@@ -1,18 +1,40 @@
 <section class="movies-page">
+
+  <div class="search-container">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ labels.searchMovie }}</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input
+        [(ngModel)]="searchQuery"
+        matInput
+        placeholder="{{ labels.searchMoviePlaceholder }}"
+      >
+    </mat-form-field>
+
+    <button class="search-button" matButton="filled" (click)="onSearch()">
+      {{ labels.search }}
+    </button>
+  </div>
+
+  <h2 [ngClass]="{'error': errorMessage()}">{{ pageTitle() }}</h2>
+
   <div class="movies-container">
 
     @if (isLoading()) {
       <mat-spinner></mat-spinner>
-      <p>Recuperando información...</p>
-    } @else if (error()) {
-      <!-- Error state in next steps -->
-    } @else if (movies().length) {
+      <p>{{ labels.retrievingInformation }}</p>
+    } @else if (errorMessage()) {
+      <h2 class="max-content-width">{{ errorMessage() }}</h2>
+    } @else if (movies().length && !errorMessage()) {
 
       @for (movie of movies(); track movie.id) {
         <app-movie-card [movie]="movie"></app-movie-card>
       }
     } @else {
-      <p>No hay información de películas para mostrar</p>
+      <div>
+        <h4>{{ labels.noSearchResults }}</h4>
+      </div>
     }
+
   </div>
 </section>
