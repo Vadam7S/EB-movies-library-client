@@ -1,23 +1,98 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
 .movie-card {
   height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   box-sizing: border-box;
+  background: #171c2b;
+  border-color: #343c50;
+  color: #f4f5f8;
+  border-radius: 12px;
+  transition: transform 180ms ease, border-color 180ms ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: #e5a33b;
+  }
+}
+
+.movie-poster {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: #252c3d;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 250ms ease;
+  }
+
+  .movie-card:hover & img {
+    transform: scale(1.04);
+  }
+}
+
+.poster-placeholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #aab3c5;
+
+  mat-icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  span {
+    font-size: 12px;
+  }
+}
+
+.movie-rating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: rgba(20, 25, 38, 0.9);
+  color: #f2b84b;
+  font-size: 13px;
+  font-weight: 700;
+  backdrop-filter: blur(6px);
+
+  mat-icon {
+    font-size: 17px;
+    width: 17px;
+    height: 17px;
+  }
 }
 
 .movie-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  min-width: 0;
 }
 
-.movie-actions {
-  margin-top: auto;
-}
-
-.movie-overview {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  overflow: hidden;
+.movie-heading {
+  min-height: 58px;
 }
 
 .movie-title {
@@ -25,16 +100,63 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  font-size: 17px;
+  line-height: 1.3;
   font-weight: 600;
 }
 
-mat-card-header {
-  height: 76px;
-  box-sizing: border-box;
-  overflow: hidden;
+.release-year {
+  display: block;
+  margin-top: 6px;
+  color: #aab3c5;
+  font-size: 12px;
 }
 
-.average-icon-class {
-  font-size: medium;
-  height: fit-content;
+.movie-overview {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  color: #c0c7d5;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 14px 0 0;
+}
+
+.movie-actions {
+  padding: 0 16px 16px;
+  margin-top: auto;
+
+  .details-button {
+    width: 100%;
+    border-radius: 7px;
+    background: #e5a33b;
+    color: #171c2b;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 600px) {
+  .movie-content {
+    padding: 12px;
+  }
+
+  .movie-actions {
+    padding: 0 12px 12px;
+  }
+
+  .movie-title {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .movie-card,
+  .movie-poster img {
+    transition: none;
+  }
+
+  .movie-card:hover {
+    transform: none;
+  }
 }

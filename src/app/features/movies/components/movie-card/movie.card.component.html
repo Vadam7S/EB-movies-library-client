@@ -1,21 +1,50 @@
-<mat-card appearance="filled"  class="movie-card">
-  <mat-card-header class="display-flex content-justify-at-center">
-    <mat-card-title class="display-flex content-justify-at-center text-align-center movie-title">{{ movie().title }}</mat-card-title>
-    <mat-card-subtitle class="display-flex content-justify-at-center text-align-center">{{ movie().release_date }}</mat-card-subtitle>
-  </mat-card-header>
+<mat-card appearance='outlined' class="movie-card">
 
-  <img mat-card-image src="{{ imageBaseUrl }}w500{{movie().poster_path}} " alt="{{ movie().title }}'s image">
+  <div class="movie-poster">
+    @if (movie().poster_path) {
+      <img
+        [src]="imageBaseUrl + movie().poster_path"
+        [alt]="movie().title + labels.poster"
+        loading="lazy"
+      />
+    } @else {
+      <div class="poster-placeholder">
+        <mat-icon>movie</mat-icon>
+        <span>{{ labels.posterUnavailable }}</span>
+      </div>
+    }
+
+    <div class="movie-rating">
+      <mat-icon>star</mat-icon>
+      <span>{{ movie().vote_average | number:'1.1-1' }}</span>
+    </div>
+  </div>
 
   <mat-card-content class="movie-content">
-    <p>
-      {{ movie().vote_average }} <mat-icon class="average-icon-class">thumb_up</mat-icon>
-    </p>
+
+    <div class="movie-heading">
+      <mat-card-title class="movie-title">
+        {{ movie().title }}
+      </mat-card-title>
+
+      <span class="release-year">
+        {{ movie().release_date ? (movie().release_date | date:'yyyy') : labels.noReleaseDate }}
+      </span>
+    </div>
+
     <p class="movie-overview">
-      {{ movie().overview }}
+      {{ movie().overview || labels.noOverviewAvailable }}
     </p>
+
   </mat-card-content>
 
   <mat-card-actions class="movie-actions">
-    <button matButton>Details</button>
+    <button
+      matButton="filled"
+      class="details-button"
+      (click)="openDetails()">{{ labels.viewDetails }}
+      <mat-icon iconPositionEnd>arrow_forward</mat-icon>
+    </button>
   </mat-card-actions>
+
 </mat-card>

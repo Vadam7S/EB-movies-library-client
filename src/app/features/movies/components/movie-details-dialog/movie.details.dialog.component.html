@@ -1,0 +1,83 @@
+
+<mat-dialog-content class="movie-dialog">
+
+  @if (isLoading()) {
+    <div class="dialog-state">
+      <mat-spinner diameter="42"></mat-spinner>
+      <p>{{ labels.loadingInfo }}</p>
+    </div>
+  } @else if (movie(); as details) {
+    <div class="movie-layout">
+      <div class="movie-poster">
+        @if (details.poster_path) {
+          <img
+            [src]="imageBaseUrl + details.poster_path"
+            [alt]="details.title"
+          />
+        } @else {
+          <div class="poster-placeholder">
+            <span>{{ labels.noPoster }}</span>
+          </div>
+        }
+      </div>
+
+      <section class="movie-info">
+        <span class="eyebrow">{{ labels.movieDetailsTitle }}</span>
+
+        <h2>{{ details.title }}</h2>
+
+        @if (details.tagline) {
+          <p class="tagline">{{ details.tagline }}</p>
+        }
+
+        <div class="movie-meta">
+          @if (details.release_date) {
+            <span>{{ details.release_date | date:'yyyy' }}</span>
+          }
+
+          <span class="rating">
+            ★ {{ details.vote_average | number:'1.1-1' }}/10
+          </span>
+
+          <span>
+            {{ details.runtime ? details.runtime + labels.minDuration : labels.noMinDuration }}
+          </span>
+        </div>
+
+        @if (details.genres?.length) {
+          <div class="genres">
+            @for (genre of details.genres; track genre.id) {
+              <span>{{ genre.name }}</span>
+            }
+          </div>
+        }
+
+        <div class="overview">
+          <h3>{{ labels.overviewTitle }}</h3>
+          <p>
+            {{ details.overview || labels.noOverview }}
+          </p>
+        </div>
+
+        <div class="additional-info">
+          <span>{{ labels.releaseDate }}</span>
+          <strong>{{ details.release_date || labels.noApply }}</strong>
+        </div>
+      </section>
+    </div>
+  } @else {
+
+    <div class="dialog-state error-state">
+      <h3>{{ labels.errorTitle }}</h3>
+      <p>
+        {{ error() ? labels.specificErrorMsg : labels.genericErrorMsg }}
+      </p>
+    </div>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button type="button" mat-dialog-close class="close-button">
+    {{ labels.close }}
+  </button>
+</mat-dialog-actions>

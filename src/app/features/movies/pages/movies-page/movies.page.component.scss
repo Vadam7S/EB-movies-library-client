@@ -4,9 +4,12 @@
 
 .movies-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-auto-rows: 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, 210px), 1fr)
+  );
+  gap: 24px;
+  align-items: stretch;
 }
 
 .search-button {

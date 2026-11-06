@@ -1,19 +1,19 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
-
-import { finalize } from 'rxjs';
-
 import { FormsModule } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatButton } from '@angular/material/button';
 import { MatFormField, MatLabel, MatPrefix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgClass } from '@angular/common';
+
+import { finalize } from 'rxjs';
+
 import { Movie } from '../../models/movie';
 import { MovieCardComponent } from '../../components/movie-card/movie.card.component';
 import { MovieService } from '../../services/movie.service';
-import { NgClass } from '@angular/common';
 import { moviesPageConstants, MoviesPageLabels, TmdbErrorCodes } from './movies.page.constants';
 
 @Component({
@@ -39,7 +39,7 @@ import { moviesPageConstants, MoviesPageLabels, TmdbErrorCodes } from './movies.
 export class MoviesPageComponent implements OnInit {
   public errorMessage = signal(moviesPageConstants.emptyString);
   public isLoading = signal<boolean>(false);
-  public labels: typeof MoviesPageLabels = MoviesPageLabels ;
+  public labels = MoviesPageLabels;
   public movies = signal<Array<Movie>>([]);
   public searchQuery = moviesPageConstants.emptyString;
   public pageTitle = signal<string>(moviesPageConstants.emptyString);
@@ -53,7 +53,6 @@ export class MoviesPageComponent implements OnInit {
   public ngOnInit() {
     this.isLoading.set(true);
     this.errorMessage.set(moviesPageConstants.emptyString);
-    this.labels = MoviesPageLabels;
     this.getPopularMovies();
   }
 
