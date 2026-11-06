@@ -11,6 +11,7 @@ export enum MoviesPageLabels {
   noSearchResults = 'No movies found matching your search criteria.',
   permissionError = 'You are not authorized to perform this operation.',
   popularMovies = 'Popular movies:',
+  reset = 'Reset',
   resourceNotFound = 'The requested resource was not found.',
   retrievingInformation = 'Retrieving information...',
   search = 'Search',

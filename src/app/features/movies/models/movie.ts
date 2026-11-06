@@ -35,7 +35,7 @@ export interface MovieDetails {
   vote_count: number;
   runtime: number | null;
   tagline: string | null;
-  genres: Array<Genre>;
+  genres?: Array<Genre>;
 }
 
 /**
