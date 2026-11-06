@@ -1,5 +1,5 @@
 .movies-page {
-  min-height: 70vh;
+  min-height: 85vh;
 }
 
 .movies-container {
@@ -7,4 +7,27 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-auto-rows: 1fr;
   gap: 20px;
+}
+
+.search-button {
+  margin-top: -1.5%;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  mat-form-field {
+    flex: 1;
+  }
+}
+
+.error {
+  color: orangered;
+  font-size: xx-large;
+}
+
+.max-content-width {
+  width: max-content;
 }

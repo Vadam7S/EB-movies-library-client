@@ -9,6 +9,7 @@ import {
   MatCardActions,
   MatCardImage
 } from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
 
 import { environment } from './../../../../../environments/environment';
 import { Movie } from './../../models/movie';
@@ -19,14 +20,15 @@ import { Movie } from './../../models/movie';
   templateUrl: 'movie.card.component.html',
   styleUrls: ['movie.card.component.scss', '../../../../app.scss'],
   imports: [
+    MatButton,
     MatCard,
     MatCardHeader,
     MatCardTitle,
     MatCardSubtitle,
     MatCardContent,
     MatCardActions,
-    MatButton,
-    MatCardImage
+    MatCardImage,
+    MatIcon
   ]
 })
 

@@ -1,11 +1,20 @@
-<header>
-  <h1>EB-Movie-library</h1>
-</header>
-
 <div class="container">
-  <router-outlet />
-</div>
+  <header class="app-header">
+    <div class="brand">
+      <mat-icon>movie</mat-icon>
 
-<footer>
-  All data about movies including images used in this project belongs to TMDB
-</footer>
+      <div class="brand-info">
+        <h1>EB-CineVault</h1>
+        <span>Your personal movie library</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="content-container">
+    <router-outlet />
+  </div>
+
+  <footer>
+    All movie data and images belong to TMDB.
+  </footer>
+</div>

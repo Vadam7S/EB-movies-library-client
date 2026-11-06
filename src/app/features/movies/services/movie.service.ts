@@ -10,7 +10,29 @@ import { MovieResponse } from '../models/movie';
 export class MovieService {
   private http = inject(HttpClient);
 
+  /**
+   * @description Executes a request to get current popular movies.
+   * @returns {Observable<MovieResponse>} An observable that contains search response.
+   */
   public getPopularMovies(): Observable<MovieResponse> {
-    return this.http.get<MovieResponse>(`${environment.apiUrl}/movie/popular`, { headers: { Authorization: `Bearer ${environment.apiToken}` }});
+    return this.http.get<MovieResponse>(`${environment.apiUrl}/movie/popular`, this.getRequestHeaders());
   }
+
+  /**
+   * @description Executes a request to search movies by query.
+   * @param {string} query - Value to match with movies.
+   * @returns {Observable<MovieResponse>} An observable that contains search response.
+   */
+  public searchMovies(query: string): Observable<MovieResponse> {
+    return this.http.get<MovieResponse>(`${environment.apiUrl}/search/movie?query=${query}`, this.getRequestHeaders());
+  }
+
+  /**
+   * @description Sets bearer token in header to execute request to TMDB Api.
+   * @returns {object} An object with headers data
+   */
+  private getRequestHeaders(): object {
+    return { headers: { Authorization: `Bearer ${environment.apiToken}` } };
+  }
+
 }
