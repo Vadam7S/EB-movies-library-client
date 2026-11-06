@@ -4,7 +4,7 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
-import { MovieResponse } from '../models/movie';
+import { MovieDetails, MovieResponse } from '../models/movie';
 
 @Injectable({ providedIn: 'root' })
 export class MovieService {
@@ -35,4 +35,13 @@ export class MovieService {
     return { headers: { Authorization: `Bearer ${environment.apiToken}` } };
   }
 
+  /**
+   * @description Executes a request to get movie details.
+   * @param {number} movieId - Movie identifier.
+   * @returns {Observable<MovieDetails>} An observable containing movie details.
+   */
+  public getMovieDetails(movieId: number): Observable<MovieDetails> {
+    return this.http.get<MovieDetails>(`${environment.apiUrl}/movie/${movieId}`,this.getRequestHeaders()
+    );
+  }
 }
