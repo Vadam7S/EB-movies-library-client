@@ -112,7 +112,7 @@ export class MoviesPageComponent implements OnInit {
 
   /**
    * @description handles an error received in petition to TMDB API to display a message about that error.
-   * @param {HttpErrorResponse} error
+   * @param {HttpErrorResponse} error - The error received from request.
    */
   private showError(error: HttpErrorResponse): void {
     this.errorMessage.set(MoviesPageLabels.unexpectedError.toString());
