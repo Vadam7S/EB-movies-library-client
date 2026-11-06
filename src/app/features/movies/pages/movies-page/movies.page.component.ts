@@ -94,7 +94,7 @@ export class MoviesPageComponent implements OnInit {
   /**
    * @description Gets current popular movies.
    */
-  private getPopularMovies(): void {
+  public getPopularMovies(): void {
     this.movieService.getPopularMovies().pipe(
       finalize(() => this.isLoading.set(false))
     )

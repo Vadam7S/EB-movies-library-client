@@ -14,6 +14,9 @@
     <button class="search-button" matButton="filled" (click)="onSearch()">
       {{ labels.search }}
     </button>
+    <button class="reset-button" matButton="filled" (click)="getPopularMovies()">
+      {{ labels.reset }}
+    </button>
   </div>
 
   <h2 [ngClass]="{'error': errorMessage()}">{{ pageTitle() }}</h2>
